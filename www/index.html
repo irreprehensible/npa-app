@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+        <title>Name Place Animal Thing</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css" />
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/refreshbtn.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
+        <script type="text/javascript" src="https://npathing.herokuapp.com/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </head>
+    <body>
+        <div style="margin-top:11px;width:100%"></div>
+        <div style="min-width:73px;height:20px;color:darkred;position:absolute;z-index: 5;top:0px;left:41%;background-color: beige;    border-radius: 5px;display: none" id="loaderMsg" >...</div>
+        <!-- <button id="btnMsg" class="btn btn-info">Send msg</button>
+        <div id="msg">test</div> -->
+        <div id="divOffline" style="color:red;position:absolute;z-index:2001;top:10%;left:35%;font-size:smaller;display:none">You are offline</div>
+        <div class="container"  id="mainContainer" style="margin-top:32px;display: none">
+            <div class="row">
+                <div class="col-xs-2 text-center" id="npat" style="font-family:Verdana, Geneva, Tahoma, sans-serif;user-select: none;font-weight: 700;"><span style="color:#cb0a0a;user-select: none;padding: 3px">N</span><span style="color:darkolivegreen;user-select: none;padding: 3px">P</span><span style="color:#8b8603;user-select: none;padding: 3px">A</span><span style="color:darkslateblue;user-select: none;padding: 3px">T</span></div>
+                <div class="col-xs-10 col-md-6 text-center" style="font-family:monospace;letter-spacing:2px;font-size:larger;user-select: none;font-weight: bolder;"><span id="gameName">game name</span>&nbsp;&nbsp;<div id="gameTimer" style="display:none;background-color:whitesmoke">00:00</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2" style="border-right:1px solid #CCC;" id="playerList">
+                </div>
+                <div class="col-xs-10" id="mainGameSection">
+                </div>
+            </div>
+        </div>
+        <div  id="gameContainer" style="margin-top:32px; ">
+            <div class="container" style="min-height:319px">
+                <div class="row">
+                    <div class="col-xs-offset-1 col-xs-10" id="js-gameContainer">
+                        <div id="logoDiv" style="position:absolute;top:-33px;z-index:3;"><img src="img/logo_75X75_t.png" /></div>
+                        <div class="row" style="margin-top: 43px;">
+                                <div class="col-xs-12">
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div class="row js-gameStuff" style="display:none">
+                                <div class="col-md-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-6 text-center" id="avatarContainer2"><img src="" style="border: 5px solid #EEE;" /></div>
+                                        <div class="col-md-3"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-6 text-center" id="playerName" style="font-family:monospace;letter-spacing:2px;"></div>
+                                        <div class="col-md-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row js-playerStuff">
+                                <div class="col-md-4 col-xs-1">&nbsp;</div>
+                                <div class="col-md-1 col-xs-2 text-right js-avLeft" style="padding-right:0px;padding-top:19px;cursor:pointer">
+                                    <i class="fa fa-arrow-circle-o-left fa-lg"></i>
+                                </div>
+                                <div class="col-md-2 col-xs-5 text-center" >
+                                    <div id="avatarContainer" >
+                                        <img src="" alt="avatar"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-xs-2 text-left js-avRight" style="padding-left:0px;padding-top:19px;cursor:pointer">
+                                    <i class="fa fa-arrow-circle-o-right fa-lg"></i>
+                                </div>
+                                <div class="col-md-4 col-xs-1">&nbsp;</div>
+                            </div>
+                            <div class="row formrowpadding js-playerStuff">
+                                <div class="col-md-12 col-xs-12">
+                                    <label for="txtPlayerName">You are...</label>
+                                </div>
+                            </div>
+                            <div class="row js-playerStuff">
+                                <div class="col-md-10 col-xs-10" style="padding-right:0px">
+                                    <input type="text" class="form-control" id="txtPlayerName" placeholder="player1" maxlength="6"/>
+                                </div>
+                                <div class="col-md-2 col-xs-2 text-left" style="padding-left:0px">
+                                    <button class="btn btn-primary btn-sm" disabled id="btnPlayerOn"><i style="padding-top:6px" class="fa fa-arrow-right fa-lg"></i></button>
+                                </div>
+                            </div>
+                            <!-- <div class="row formrowpadding js-playerStuff">   
+                                <div class="col-md-12 col-xs-12">
+                                    <label>you might want to</label>
+                                </div>
+                            </div>
+                            <div class="row formrowpadding js-playerStuff">   
+                                <div class="col-md-8 col-xs-8 text-center">
+                                    <button class="btn btn-info btn-sm">Sign in</button> 
+                                </div>
+                                <div class="col-md-4 col-xs-4 text-center">or <a style="cursor:pointer">Register</a></div>
+                            </div> -->
+                            <div class="row formrowpadding js-gameStuff" style="display:none">
+                                <div class="col-md-12 col-xs-12 text-right">
+                                    <label for="txtGameName">you can Join in <i style="padding-top:6px" class="fa fa-arrow-right fa-lg"></i></label>
+                                </div>
+                            </div>
+                            <div class="row formrowpadding js-gameStuff" style="display:none">
+                                    <div class="col-md-12 col-xs-12 text-center">
+                                        <label for="txtGameName">or create a new one... <i style="padding-top:6px" class="fa fa-arrow-down fa-lg"></i></label>
+                                    </div>
+                            </div>
+                            <div class="row formrowpadding js-gameStuff" style="display:none">
+                                <div class="col-xs-6 text-right">
+                                    <label for="txtGameName">Name your game</label>
+                                </div>
+                                <div class="col-xs-6 text-left">
+                                    <input type="text" class="form-control" id="txtGameName" placeholder="game1" maxlength="8" />
+                                </div>
+                            </div>
+                            <div class="row formrowpadding js-gameStuff" style="display:none">
+                                <div class="col-xs-6 text-right">
+                                    <label for="gameTime">Each play has a time of </label>
+                                </div>
+                                <div class="col-xs-6 text-left">
+                                    <select class="form-control" id="gameTime" >
+                                        <option value="" disabled="" selected="" class="ng-binding">Select time</option>
+                                        <!--<option value="120">120 Seconds</option> -->
+                                        <option value="90">90 Seconds</option>
+                                        <option value="60">60 Seconds</option>
+                                        <option value="30">30 Seconds</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    
+                                </div>
+                            </div>
+                            <div class="row formrowpadding js-gameStuff" style="display:none">
+                                <div class="col-md-9 col-xs-9 text-right" >
+                                    <button class="btn btn-primary btn-sm" disabled id="btnGameOn" ng-click="createGame()">Create game &nbsp;<i style="padding-top:6px" class="fa fa-circle-o fa-lg"></i></button>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-xs-4" style="border-left:1px solid #CCC;display:none" id="gamesList">
+                        <div class="row">
+                            <div class="col-xs-10 text-center">
+                                <label>Games</label>
+                            </div>
+                            <div class="col-xs-1 text-center">
+                                <span class="fa fa-refresh  js-gamesLoad" title="Refresh" data-ng-click="refreshGames()" ></span>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top:3px">
+                            <div id="gamesContainer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>

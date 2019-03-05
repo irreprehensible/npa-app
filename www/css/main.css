@@ -1,0 +1,204 @@
+
+body {overflow:hidden;background-image:url('../img/paperbg.jpg');background-repeat: repeat}
+/* @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+    .orientation{
+        display:block;
+        height:100%;
+        width:100%;
+        background-color: rgb(202, 213, 219);
+        position: absolute;
+        z-index: 5;
+        top:0px;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        letter-spacing: 2px;
+        font-weight: bold;
+        font-size:large;
+        margin:0 auto;
+        text-align: center;
+    }
+  }
+  @media (orientation: portrait) {
+    .orientation{
+        display:none
+    }
+} */
+
+.notify-badge{
+    position: absolute;
+    right:11px;
+    top:-1px;
+    background:#fff;
+    text-align: center;
+    border-radius: 30px 30px 30px 30px;
+    color:green;
+    padding:1px 2px 1px 2px;
+    font-size:8px;
+    user-select: none;
+}
+.badge{
+    background-color: #6495edcc;
+    font-size: 11px;
+}
+.alphabet{
+    font-size: 23px;
+    font-weight:bolder;
+    transition: transform .2s;
+    margin: 0 auto;
+    padding: 3px;
+}
+
+.vibrate{
+    animation: shake 0.5s; 
+}
+
+@keyframes shake {
+    0% { 
+        -ms-transform: scale(2,3); /* IE 9 */
+    -webkit-transform: scale(2,3); /* Safari */
+    transform: scale(2,3); /* Standard syntax */
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+  .blinker {
+    animation: blinker 2s linear infinite;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+  #playersContainer{
+    overflow-y:scroll;
+    overflow-x:hidden;
+    min-height: 319px;
+    max-height: 319px;
+  }
+  #gamesContainer{
+    min-height: 319px;
+    max-height: 319px;
+  }
+  #gameContainer{
+    background:rgb(225,255,255);
+    background:-moz-linear-gradient(top, rgba(225,255,255,1) 0%, rgba(225,255,255,1) 7%, rgba(225,255,255,1) 12%, rgba(253,255,255,1) 12%, rgba(230,248,253,1) 30%, rgba(200,238,251,1) 54%, rgba(190,228,248,1) 75%, rgba(177,216,245,1) 100%);
+    background:-webkit-linear-gradient(top, rgba(225,255,255,1) 0%,rgba(225,255,255,1) 7%,rgba(225,255,255,1) 12%,rgba(253,255,255,1) 12%,rgba(230,248,253,1) 30%,rgba(200,238,251,1) 54%,rgba(190,228,248,1) 75%,rgba(177,216,245,1) 100%);
+    background:linear-gradient(to bottom, rgba(225,255,255,1) 0%,rgba(225,255,255,1) 7%,rgba(225,255,255,1) 12%,rgba(253,255,255,1) 12%,rgba(230,248,253,1) 30%,rgba(200,238,251,1) 54%,rgba(190,228,248,1) 75%,rgba(177,216,245,1) 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1ffff', endColorstr='#b1d8f5',GradientType=0 )  ;
+    z-index: 4;
+    opacity:1;
+    width: 100%;
+    min-height:419px;
+  }
+  #avatarContainer{
+    box-shadow: inset 0 0 0 200px rgba(200, 183, 183, 0.3);
+    border-bottom: 7px solid #CCC;
+  }
+  #avatarContainer:hover{
+    /* box-shadow: inset 0 0 0 200px rgba(200, 183, 183, 0.3); */
+    border-bottom: 7px solid #DDD;
+  }
+  .green{
+      color:green;
+  }
+  .red{
+      color:#cb0a0a;
+  }
+  .orange{
+      color:#8b8603;
+  }
+  .brown{
+      color: brown;
+  }
+  .blue{
+      color:blue
+  }
+  .grey{
+      color: darkgrey;
+  }
+  .blueBg{
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b8e1fc+0,a9d2f3+10,90bae4+25,90bcea+37,90bff0+50,a2daf5+83,bdf3fd+100 */
+background: rgb(184,225,252); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(184,225,252,1) 0%, rgba(169,210,243,1) 10%, rgba(144,186,228,1) 25%, rgba(144,188,234,1) 37%, rgba(144,191,240,1) 50%, rgba(162,218,245,1) 83%, rgba(189,243,253,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(184,225,252,1) 0%,rgba(169,210,243,1) 10%,rgba(144,186,228,1) 25%,rgba(144,188,234,1) 37%,rgba(144,191,240,1) 50%,rgba(162,218,245,1) 83%,rgba(189,243,253,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(184,225,252,1) 0%,rgba(169,210,243,1) 10%,rgba(144,186,228,1) 25%,rgba(144,188,234,1) 37%,rgba(144,191,240,1) 50%,rgba(162,218,245,1) 83%,rgba(189,243,253,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8e1fc', endColorstr='#bdf3fd',GradientType=0 ); /* IE6-9 */
+  }
+  label{
+      letter-spacing: 3px
+  }
+  .formrowpadding{
+      padding-top:13px
+  }
+  .p-t{
+    padding-top: 10px;
+  }
+  h4{
+      letter-spacing:2px;
+      font-family:"Verdana, Geneva, Tahoma, sans-serif" 
+  }
+ /******reset button... to change color, change css*/
+#btnChat{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index:3;
+    /*width: 28px;
+    height: 28px;
+    border-radius: 50%;*/
+    background:transparent;
+    position: absolute;
+    cursor: pointer;
+    /* box-shadow: 0px 1px 3px #666; */
+}
+#btnReset #blRing{
+	top: 15%; left:15%;
+	width:72%;
+	height:72%;
+	position: relative;
+	border-radius: 50%;
+	background-color:#fff;
+}
+#btnReset #blRing #wRing{
+	top: 18%; left:18%;
+	width:64%;
+	height:64%;
+	position: relative;
+	border-radius: 50%;
+	background-color:darkgreen;
+
+}
+.gameButton{
+    background: rgb(235,241,246); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(235,241,246,1) 0%, rgba(171,211,238,1) 62%, rgba(137,195,235,1) 100%, rgba(213,235,251,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 62%,rgba(137,195,235,1) 100%,rgba(213,235,251,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 62%,rgba(137,195,235,1) 100%,rgba(213,235,251,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 ); /* IE6-9 */
+    min-height: 32px;
+    padding-left:1px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 3px;
+    line-height: 15px;
+    border:1px solid transparent;
+}
+.gameButton:hover{
+  border: 1px solid #639ece;
+}
+.fa-stack {
+  position: relative;
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  line-height: 1;
+  vertical-align: middle
+}
